@@ -17,7 +17,7 @@ class Navigation extends Component {
         <a className="navbar-brand" href="#">
           {this.props.titulo}
           <span className="badge badge-pill badge-light ml-2">
-            {this.state.tasks.length}
+            {this.props.onNumberTasks}
           </span>
         </a>
       </nav>

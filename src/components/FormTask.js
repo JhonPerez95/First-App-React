@@ -21,12 +21,13 @@ class FormTask extends Component {
       [name]: value,
     });
 
-    console.log(this.state);
+    // console.log(this.state);
   }
 
   handleSubmit(e) {
     e.preventDefault(); // Evita que se Refresque
-    console.log("Enviando los datos");
+    this.props.onAddTask(this.state);
+    console.log(this.state);
   }
 
   render() {
