@@ -1,18 +1,18 @@
 import React, { Component } from "react";
 
-import { tasks } from "../data/task.json";
-
 class Task extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      tasks,
-    };
+  constructor() {
+    super();
   }
+
+  deleteTask(i) {
+    this.props.onDeleteTask(i);
+  }
+
   render() {
     return (
       <div className="row mt-4">
-        {this.state.tasks.map((task, i) => (
+        {this.props.onAllTasks.tasks.map((task, i) => (
           <div className="col-md-4 p-2" key={i}>
             <div className="card mt-3">
               <div className="card-header">
@@ -26,6 +26,14 @@ class Task extends Component {
                 <p>
                   <mark>{task.responsable} </mark>
                 </p>
+              </div>
+              <div className="card-footer">
+                <button
+                  className="btn btn-danger"
+                  onClick={this.deleteTask.bind(this, i)}
+                >
+                  Eliminar
+                </button>
               </div>
             </div>
           </div>

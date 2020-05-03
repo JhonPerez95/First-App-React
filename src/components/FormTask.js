@@ -20,7 +20,6 @@ class FormTask extends Component {
     this.setState({
       [name]: value,
     });
-
     // console.log(this.state);
   }
 
@@ -28,6 +27,12 @@ class FormTask extends Component {
     e.preventDefault(); // Evita que se Refresque
     this.props.onAddTask(this.state);
     console.log(this.state);
+    this.setState({
+      title: "",
+      description: "",
+      responsable: "",
+      priority: "low",
+    });
   }
 
   render() {

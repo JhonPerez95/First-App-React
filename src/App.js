@@ -17,12 +17,25 @@ class App extends React.Component {
     };
 
     this.handleAddtask = this.handleAddtask.bind(this);
+    this.removeTask = this.removeTask.bind(this);
   }
 
   handleAddtask(task) {
+    // console.log(this.state.tasks);
     this.setState({
       tasks: [...this.state.tasks, task],
     });
+  }
+
+  removeTask(index) {
+    if (window.confirm("Esta seguro de eliminar?")) {
+      // console.log(index);
+      this.setState({
+        tasks: this.state.tasks.filter((e, i) => {
+          return i !== index;
+        }),
+      });
+    }
   }
 
   render() {
@@ -30,11 +43,10 @@ class App extends React.Component {
       <div className="App">
         <Navigation titulo="Task" onNumberTasks={this.state.tasks.length} />
         <div className="container">
-          <Task />
+          <Task onAllTasks={this.state} onDeleteTask={this.removeTask} />
         </div>
         <div className="container">
           <FormTask onAddTask={this.handleAddtask} />
-          {console.log(this.state)}
         </div>
         <img src={logo} className="App-logo" alt="logo" />
       </div>
